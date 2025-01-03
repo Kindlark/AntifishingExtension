@@ -1,24 +1,7 @@
-const apiKeyInput = document.getElementById('api-key');
-const saveKeyButton = document.getElementById('save-key');
 const checkUrlButton = document.getElementById('check-url');
 const messageDiv = document.getElementById('message');
 
-async function getApiKey() {
-    return new Promise((resolve) => {
-        chrome.storage.local.get(['apiKey'], function (result) {
-            resolve(result.apiKey);
-        });
-    });
-}
-
-// сохраняет urlку
-async function saveApiKey(apiKey) {
-    return new Promise((resolve) => {
-        chrome.storage.local.set({ apiKey: apiKey }, function () {
-            resolve();
-        });
-    });
-}
+const apiKey = "AIzaSyDaG1QNpDVufoq2i0X_HFHRuBb4QONf6vs";
 
 // проверяет ссылку на фишинг
 async function checkUrl(url, apiKey) {
@@ -75,14 +58,8 @@ async function getCurrentUrl() {
     });
 }
 
-
 // будет получать url если url будет меняться
 async function checkCurrentUrl() {
-    let apiKey = await getApiKey();
-    if (!apiKey) {
-        showMessage('API key not set. Please set it in the popup.');
-        return;
-    }
     let currentUrl = await getCurrentUrl();
 
     if (currentUrl) {
@@ -97,26 +74,6 @@ async function checkCurrentUrl() {
         showMessage('Could not get current URL');
     }
 }
-
-
-// достает api ключ из сохраненений
-document.addEventListener('DOMContentLoaded', async function () {
-    const apiKey = await getApiKey();
-    if (apiKey) {
-        apiKeyInput.value = apiKey;
-    }
-});
-
-// сохраняет api ключ
-saveKeyButton.addEventListener('click', async () => {
-    const apiKey = apiKeyInput.value.trim();
-    if (apiKey) {
-        await saveApiKey(apiKey);
-        showMessage("API Key Saved");
-    } else {
-        showMessage("Please enter API Key!");
-    }
-});
 
 // запускает проверку ссылки когда нажимается кнопка
 checkUrlButton.addEventListener('click', async () => {

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Safe Browsing Checker",
+  "name": "Antifishing Extension",
   "version": "1.0",
-  "description": "Проверяет URL страницы через Google Safe Browsing API.",
+  "description": "",
   "permissions": [
     "activeTab",
     "storage"
@@ -11,12 +11,14 @@
     "default_popup": "popup.html",
      "default_icon": {
         "16": "images/icon-16.png",
+        "32": "images/icon-32.png",
         "48": "images/icon-48.png",
         "128": "images/icon-128.png"
       }
   },
   "icons": {
     "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   }
