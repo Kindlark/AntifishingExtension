@@ -1,7 +1,24 @@
 const checkUrlButton = document.getElementById('check-url');
-const messageDiv = document.getElementById('message');
+const curUrl = document.getElementById('cururl');
+const messageDiv = document.getElementById('status');
 
 const apiKey = "AIzaSyDaG1QNpDVufoq2i0X_HFHRuBb4QONf6vs";
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        
+        if (tabs.length > 0) {
+            const currentTab = tabs[0];
+            const url = currentTab.url; 
+            const furl = url.replace(/^(https?:\/\/)/, '').match(/^([^\/]+)/)[1];
+
+            curUrl.textContent = furl;
+        }
+    });
+
+    checkCurrentUrl();
+});
 
 // проверяет ссылку на фишинг
 async function checkUrl(url, apiKey) {
@@ -58,25 +75,18 @@ async function getCurrentUrl() {
     });
 }
 
-// будет получать url если url будет меняться
+// проверка urlа
 async function checkCurrentUrl() {
     let currentUrl = await getCurrentUrl();
 
     if (currentUrl) {
-        showMessage(`Checking URL: ${currentUrl}`);
         const matches = await checkUrl(currentUrl, apiKey);
         if (matches && matches.length > 0) {
-            showMessage(`Dangerous Site Detected! URL: ${currentUrl} is dangerous!`);
+            showMessage(`Фишинговый сайт!`);
         } else {
-            showMessage(`URL: ${currentUrl} is OK!`);
+            showMessage(`Этот сайт безопасен :D`);
         }
     } else {
         showMessage('Could not get current URL');
     }
 }
-
-// запускает проверку ссылки когда нажимается кнопка
-checkUrlButton.addEventListener('click', async () => {
-    showMessage("Checking URL...")
-    await checkCurrentUrl();
-});
