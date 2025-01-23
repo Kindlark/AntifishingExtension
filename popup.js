@@ -105,10 +105,14 @@ async function checkCurrentUrl() {
         const matches = await checkUrl(currentUrl, apiKey);
         if (matches && matches.length > 0) {
             showMessage(`Фишинговый сайт!`);
+            messageDiv.style.backgroundColor='#ff575f';
+            messageDiv.style.color="#ffffff";
             addBlocked(currentUrl);
             setRecentBlockedWebsites(blockedwebsitestoshow);
         } else {
             showMessage(`Этот сайт безопасен :D`);
+            messageDiv.style.backgroundColor='#83f7a0';
+            messageDiv.style.color="#000000";
         }
     } else {
         showMessage('Could not get current URL');
@@ -118,8 +122,7 @@ async function checkCurrentUrl() {
 function addBlocked(website) {
 
     let websites = JSON.parse(localStorage.getItem('blocked')) || [];
-
-    websites.unshift(website);
+    if(!website.includes(website))websites.unshift(website);
 
     localStorage.setItem('blocked', JSON.stringify(websites));
 }
