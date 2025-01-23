@@ -1,7 +1,8 @@
-const checkUrlButton = document.getElementById('check-url');
 const curUrl = document.getElementById('cururl');
 const messageDiv = document.getElementById('status');
+const recblockedwebsites = document.getElementById("recentlyblocked-list");
 
+const blockedwebsitestoshow = 7;
 const apiKey = "AIzaSyDaG1QNpDVufoq2i0X_HFHRuBb4QONf6vs";
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,7 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     checkCurrentUrl();
+    setRecentBlockedWebsites(blockedwebsitestoshow);
 });
+
+
+function setRecentBlockedWebsites(n) {
+
+    let websites = JSON.parse(localStorage.getItem('blocked')) || [];
+    
+    if (websites != "") {
+        const blockedsites = websites.slice(0, n);
+        const fsites = blockedsites.map(el => {
+            if (el.length > 40) {
+                return el.slice(0, 40) + '...';
+            }
+            return el;
+        });
+
+        recblockedwebsites.textContent = fsites.join("\n"); 
+    } else {
+        recblockedwebsites.textContent = "Здесь пока ничего нету...";
+    }
+}
 
 // проверяет ссылку на фишинг
 async function checkUrl(url, apiKey) {
@@ -26,7 +48,7 @@ async function checkUrl(url, apiKey) {
 
     const data = {
         "client": {
-            "clientId": "your-extension-id",
+            "clientId": "theantifishing",
             "clientVersion": "1.0.0"
         },
         "threatInfo": {
@@ -83,10 +105,21 @@ async function checkCurrentUrl() {
         const matches = await checkUrl(currentUrl, apiKey);
         if (matches && matches.length > 0) {
             showMessage(`Фишинговый сайт!`);
+            addBlocked(currentUrl);
+            setRecentBlockedWebsites(blockedwebsitestoshow);
         } else {
             showMessage(`Этот сайт безопасен :D`);
         }
     } else {
         showMessage('Could not get current URL');
     }
+}
+
+function addBlocked(website) {
+
+    let websites = JSON.parse(localStorage.getItem('blocked')) || [];
+
+    websites.unshift(website);
+
+    localStorage.setItem('blocked', JSON.stringify(websites));
 }

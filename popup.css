@@ -28,3 +28,12 @@ body {
     font-size: 16px;
     margin-top: 40px;
 }
+
+.recentlyblocked {
+    margin-top: 52px;
+    margin-left: 74px;
+}
+
+#recentlyblocked-list {
+    margin-left: 80px;
+}
