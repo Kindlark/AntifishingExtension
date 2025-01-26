@@ -1,14 +1,15 @@
 {
   "manifest_version": 3,
   "name": "The Antifishing",
-  "version": "1.0",
-  "description": "The Antifishing - powerful chrome-based extension that helps users easily recognize fishing websites. It also contains a wide range of useful functions and has a user-friendly interface so everyone would be able to use it",
+  "version": "1.0.0",
+  "description": "The Antifishing - powerful chrome-based extension that helps users easily recognize fishing websites",
   "permissions": [
     "activeTab",
     "storage",
     "scripting",
     "tabs",
-    "webNavigation"
+    "webNavigation",
+    "webRequest"
   ],
   "host_permissions" : [
     "<all_urls>"
