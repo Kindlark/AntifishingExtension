@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <button class="settings"><img src="plug-img/settings.png" style="height: 25px; width: 25px;"></button>
-    <div id="cururl">Неудалось получить домен</div>
-    <div id="status" style="width: fit-content; height: fit-content; text-align: center; align-items: center; justify-self: center;">Нет информации D:</div>
-    <h4 class="recentlyblocked">Недавно заблокированные:</h4>
+    <div id="popup_content">
+        <button class="settings" id="settings"><img src="plug-img/settings.png" style="height: 25px; width: 25px;"></button>
+        <div id="cururl">Неудалось получить домен</div>
+        <div id="status" style="width: fit-content; height: fit-content; text-align: center; align-items: center; justify-self: center;">Нет информации D:</div>
+        <h4 class="recentlyblocked">Недавно заблокированные:</h4>
 
-    <p id="blockedSitesList"></p>
+        <p id="blockedSitesList"></p>
+        <div style="text-align: center;">
+            <button id="csv_download">csv</button>
+            <button id="json_download">json</button>
+        </div>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>

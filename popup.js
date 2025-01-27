@@ -1,6 +1,9 @@
 const curUrl = document.getElementById('cururl');
 const messageDiv = document.getElementById('status');
 const recblockedwebsites = document.getElementById("blockedSitesList");
+const toSettings = document.getElementById('settings');
+const downloadCSV = document.getElementById('csv_download');
+const downloadJSON = document.getElementById('json_download');
 
 const amountOfBlockedSitesToShow = 7;
 
@@ -80,3 +83,44 @@ async function checkCurrentUrl() {
     }
   });
 }
+
+// function downloadCSV(jsonData, filename = 'data.csv') {
+
+//   const items = jsonData; 
+//   const replacer = (key, value) => value === null ? '' : value; 
+//   const header = Object.keys(items[0]); 
+//   let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+//   csv.unshift(header.join(',')); 
+//   csv = csv.join('\r\n');
+
+//   const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+//   const downloadAnchorNode = document.createElement('a');
+//   downloadAnchorNode.setAttribute("href", dataStr);
+//   downloadAnchorNode.setAttribute("download", filename);
+//   document.body.appendChild(downloadAnchorNode);
+//   downloadAnchorNode.click();
+//   downloadAnchorNode.remove();
+// }
+
+// downloadCSV.addEventListener('click', function() {
+  
+// });
+
+function download_json(jsonData, filename = 'data.json') {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonData, null, 2));
+  const downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href",     dataStr);
+  downloadAnchorNode.setAttribute("download", filename);
+  document.body.appendChild(downloadAnchorNode); 
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
+downloadJSON.addEventListener('click', function() {
+
+  chrome.storage.local.get({ blocked: []}, async function(items) {
+    const blocked = items.blocked;
+    download_json(blocked, 'blockedWebsitesJSON.json');
+  });
+
+});
