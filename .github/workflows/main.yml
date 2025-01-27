@@ -1,0 +1,15 @@
+on: push
+jobs:
+  pack-crx:
+    runs-on: ubntsrv
+    steps:
+      - name: Git Cloning...
+        uses: actions/checkout@v4
+      - name: pack a .crx
+        run: crxmake --pack-extension=${{github.workspace}}
+      - name: Upload .crx
+        uses: actions/upload-artifact@v4
+        with:
+          name: AntiFishing
+          path: ${{github.workspace}}.crx
+    
