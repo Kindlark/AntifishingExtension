@@ -1,8 +1,12 @@
 on: push
 jobs:
   pack-crx:
-    runs-on: ubntsrv
+    runs-on: ubuntu-latest
     steps:
+      - name: setup ruby
+        run: sudo apt install ruby
+      - name: setup crxmake
+        run: sudo gem install crxmake
       - name: Git Cloning...
         uses: actions/checkout@v4
       - name: pack a .crx
