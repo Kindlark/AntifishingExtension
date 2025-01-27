@@ -86,8 +86,11 @@ function getRecentlyBlockedList() {
 
 function addToRecentlyBlocked(url) {
   getRecentlyBlockedList().then((blocked) => {
-      if(!blocked.includes(url)) {
-        blocked.push(url);
+    const alrBlocked=(domain) => domain.url==url;  
+    if(!blocked.some(alrBlocked)) {
+        let date=new Date();
+        let domain={"url": url, "time": date.toLocaleString()}
+        blocked.push(domain);
         chrome.storage.local.set({ blocked: blocked });
       }
   });

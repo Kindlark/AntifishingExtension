@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const blocked = items.blocked;
       if (blocked && blocked.length > 0) {
         let cnt = 0;
-        for (const site of blocked) {
+        for (site of blocked) {
+          site=site.url
           if (cnt == amountOfBlockedSitesToShow) {
             break;
           }
@@ -70,8 +71,8 @@ async function checkCurrentUrl() {
 
   chrome.storage.local.get({ blocked: []}, async function(items) {
     const blocked = items.blocked;
-  
-    if (blocked && blocked.length > 0 && blocked.includes(currentUrl)) {    
+    const wasBlocked= (bl_url) => bl_url.url==currentUrl;
+    if (blocked && blocked.length > 0 && blocked.some(wasBlocked)) {    
       showMessage(`Фишинговый сайт!`);
       messageDiv.style.backgroundColor='#ff575f';
       messageDiv.style.color="#ffffff";
