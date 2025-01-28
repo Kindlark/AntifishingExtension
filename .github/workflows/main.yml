@@ -19,6 +19,7 @@ jobs:
         run: |
           google-chrome --pack-extension=${{github.workspace}} --pack-extension-key=/home/runner/work/${{github.event.repository.name}}/key.pem
           pwd
+          cd ~
           ls
       - name: Upload .crx
         uses: actions/upload-artifact@v4
