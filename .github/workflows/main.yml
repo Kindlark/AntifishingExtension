@@ -17,7 +17,7 @@ jobs:
           SIGN_PRIVKEY: ${{secrets.SIGN_PRIVKEY}}
       - name: pack a .crx
         run: |
-          cd ~/work/${{gitub.event.repository.name}}
+          cd ~/work/${{github.event.repository.name}}
           google-chrome --pack-extension=${{github.workspace}} --pack-extension-key=/home/runner/work/${{github.event.repository.name}}/key.pem
           pwd
           ls
