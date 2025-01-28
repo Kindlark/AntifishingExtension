@@ -5,13 +5,13 @@ body {
     background-size: cover; 
     background-position: center;
     font-family: sans-serif;
+    padding-top: 9px;
 }
 
 .settings {
     width: 25px;
     height: 25px;
     margin-left: 345px;
-    margin-top: 6px;
     border: none;
     background: none;
     cursor: pointer;
