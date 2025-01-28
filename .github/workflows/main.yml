@@ -3,17 +3,25 @@ jobs:
   pack-crx:
     runs-on: ubuntu-latest
     steps:
-      - name: setup ruby
-        run: sudo apt install ruby
-      - name: setup crxmake
-        run: sudo gem install crxmake
+      - name: download google chrome
+        run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - name: setup google chrome
+        run: sudo dpkg -i google-chrome-stable_current_amd64.deb
       - name: Git Cloning...
         uses: actions/checkout@v4
+      - name: pwd
+        run: pwd  
+      - name: Export privkey
+        run: 'echo "$SIGN_PRIVKEY">>/home/runner/work/${{github.event.repository.name}}/key.pem'
+        env:
+          SIGN_PRIVKEY: ${{secrets.SIGN_PRIVKEY}}
       - name: pack a .crx
-        run: crxmake --pack-extension=${{github.workspace}}
+        run: |
+          google-chrome --pack-extension=${{github.workspace}} --pack-extension-key=/home/runner/work/${{github.event.repository.name}}/key.pem
+          pwd
+          ls
       - name: Upload .crx
         uses: actions/upload-artifact@v4
         with:
-          name: AntiFishing
-          path: ${{github.event.repository.name}}.crx
-    
+            name: Packed_Extension.crx
+            path: ${{github.workspace}}/${{github.event.repository.name}}.crx
