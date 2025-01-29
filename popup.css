@@ -1,11 +1,13 @@
 body {
     width: 395px;
     height: 525px;
-    background-image: url('plug-img/background.svg');
+    background-image: url('plug-img/background 1.svg');
     background-size: cover; 
     background-position: center;
-    font-family: sans-serif;
-    padding-top: 9px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(59, 54, 42);
+    margin: 0;
+    box-shadow: 0 0 10px rgba(75, 79, 54, 0.5);
 }
 
 .settings {
@@ -19,29 +21,72 @@ body {
 
 #cururl {
     text-align: center;
-    font-size: 18px;
-    margin-top: 100px;
+    font-size: 20px;
+    position: relative;
+    font-weight: 700;
+    top: 90px;
 }
 
 #status {
     text-align: center;
     font-size: 16px;
-    margin-top: 40px;
+    position: absolute;
+    width: 34px;
+    height: 258px;
+    border-radius: 10px;
+    vertical-align: auto;
+    top: 189px;
+    left: 68px;
 }
 
 .recentlyblocked {
     margin-top: 52px;
-    margin-left: 74px;
-}
-
-#blockedSitesList {
     margin-left: 80px;
 }
 
-#csv_download {
+#blockedSitesList {
+    margin-left: 83px;
+}
 
+.container{
+    width: 100%;
+}
+
+.downloadbutton{
+    width: 60px;
+    height: 25px;
+    border: rgb(74, 90, 65), 2px, solid;
+    border-radius: 10px;
+    color: rgb(54, 62, 52);
+    background-color: rgb(119, 126, 94);
+    outline: none;
+}
+.downloadbutton:hover{
+    border:rgb(50, 61, 44), 3px, solid;
+    border-radius: 10px;
+    background-color: rgb(91, 96, 71);
+    box-shadow: inset 0 0 10px rgba(44, 52, 40, 0.5);
+    text-shadow: 0 0 2px rgba(212, 235, 205, 0.5);
+    color: rgb(212, 235, 205);
+    transition: 200ms;
+}
+
+#additionalblock{
+    position: absolute;
+    top: 220px;
+    margin: 0;
+    padding: 0;
+}
+
+#buttonbox{
+    position: relative;
+    bottom: -90px;
+}
+
+#csv_download {
+    margin-right: 10px;
 }
 
 #json_download {
-
+    margin-left: 10px;
 }
