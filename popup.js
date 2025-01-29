@@ -74,13 +74,26 @@ async function checkCurrentUrl() {
     const wasBlocked= (bl_url) => bl_url.url==currentUrl;
     if (blocked && blocked.length > 0 && blocked.some(wasBlocked)) {    
       showMessage(`Фишинговый сайт!`);
-      messageDiv.style.backgroundColor='#ff575f';
+      messageDiv.style.backgroundColor='#C7503E';
       messageDiv.style.color="#ffffff";
+      messageDiv.style.width="258px";
+      messageDiv.style.height="30px";
+      messageDiv.style.paddingTop="4px";
+      messageDiv.style.boxShadow="inset 0 0 10px rgba(77, 30, 20, 0.5)";
+      messageDiv.style.textShadow="0 0 4px rgba(255, 250, 247, 0.8)";
+      messageDiv.style.fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+
 
     } else {
       showMessage(`Этот сайт безопасен :D`);
       messageDiv.style.backgroundColor='#83f7a0';
-      messageDiv.style.color="#000000";
+      messageDiv.style.color="rgb(40, 48, 37)";
+      messageDiv.style.width="258px";
+      messageDiv.style.height="30px";
+      messageDiv.style.paddingTop="4px";
+      messageDiv.style.boxShadow="inset 0 0 10px rgba(18, 84, 20, 0.5)";
+      messageDiv.style.textShadow="0 0 3px rgba(63, 75, 60, 0.6)";
+      messageDiv.style.fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
     }
   });
 }

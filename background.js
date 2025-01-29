@@ -46,9 +46,23 @@ async function handlePhishing(tabId) {
 
       function: () => {
           document.body.innerHTML = `
-              <div style="display: flex; margin: 0; justify-content: center; align-items: center; width: 100vw; height: 100vh; font-size: 30px; font-weight: bold; text-align: center; background-color: #e63946; color: #f1faee; font-family: Arial, Helvetica, sans-serif; flex-direction: column;">
+              <div style="display: flex; margin: 0;
+              justify-content: center; align-items: center;
+              width: 100vw; height: 100vh; font-size: 50px;
+              font-weight: 1000; text-align: center; background-color: #C7503E;
+              color: #f1faee;
+              text-shadow: 0 4px 0 rgba(235, 219, 205, 0.5);
+              font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif; flex-direction: column;">
                 <p>Сайт заблокирован из-за фишинга!</p>
-                <button id="addToWhiteList" style="border: none; background-color:rgb(41, 214, 119); border-radius: 5px; color: #f1faee; width: 10rem; height: 3rem; cursor: pointer;">Все равно перейти</button>
+                <button id="addToWhiteList" style="border: none;
+                 background-color:rgb(96, 146, 56);
+                 box-shadow:  0 0 10px rgba(87, 41, 31, 0.5);
+                 border-radius: 30px;
+                 text-shadow: 0 0 5px rgba(232, 239, 214, 0.5);
+                 color:rgb(223, 255, 213);
+                 width: 15rem; height: 4rem;
+                 cursor: pointer;"
+                 >Всё равно перейти</button>
               </div>
           `;
           document.body.style.cssText = 'margin: 0;';
