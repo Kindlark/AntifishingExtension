@@ -1,9 +1,11 @@
 const curUrl = document.getElementById('cururl');
-const messageDiv = document.getElementById('status');
+const messageCircle = document.getElementById('statusCircle');
+const messageText = document.getElementById('statusText');
 const recblockedwebsites = document.getElementById("blockedSitesList");
 const toSettings = document.getElementById('settings');
 const downloadCSV = document.getElementById('csv_download');
 const downloadJSON = document.getElementById('json_download');
+const body = document.getElementById('bod')
 
 const amountOfBlockedSitesToShow = 7;
 
@@ -63,7 +65,7 @@ async function getCurrentUrl() {
 }
 
 function showMessage(message) {
-  messageDiv.textContent = message;
+  messageText.textContent = message;
 }
 
 async function checkCurrentUrl() {
@@ -74,26 +76,18 @@ async function checkCurrentUrl() {
     const wasBlocked= (bl_url) => bl_url.url==currentUrl;
     if (blocked && blocked.length > 0 && blocked.some(wasBlocked)) {    
       showMessage(`Фишинговый сайт!`);
-      messageDiv.style.backgroundColor='#C7503E';
-      messageDiv.style.color="#ffffff";
-      messageDiv.style.width="258px";
-      messageDiv.style.height="30px";
-      messageDiv.style.paddingTop="4px";
-      messageDiv.style.boxShadow="inset 0 0 10px rgba(77, 30, 20, 0.5)";
-      messageDiv.style.textShadow="0 0 4px rgba(255, 250, 247, 0.8)";
-      messageDiv.style.fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
-
-
+      body.style.backgroundImage="url('plug-img/background 4.svg')"
+      messageCircle.style.backgroundColor="#CA4842"
+      messageCircle.style.boxShadow="0 0 10px #CA4842";
+      messageText.style.color="#D44842";
+      messageText.style.textShadow="0 0 3px #822425";
     } else {
-      showMessage(`Этот сайт безопасен :D`);
-      messageDiv.style.backgroundColor='#83f7a0';
-      messageDiv.style.color="rgb(40, 48, 37)";
-      messageDiv.style.width="258px";
-      messageDiv.style.height="30px";
-      messageDiv.style.paddingTop="4px";
-      messageDiv.style.boxShadow="inset 0 0 10px rgba(18, 84, 20, 0.5)";
-      messageDiv.style.textShadow="0 0 3px rgba(63, 75, 60, 0.6)";
-      messageDiv.style.fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+      showMessage(`Cайт безопасен :D`);
+      body.style.backgroundImage="url('plug-img/background 3.svg')"
+      messageCircle.style.backgroundColor="#19CFF8"
+      messageCircle.style.boxShadow="0 0 10px #19CFF8";
+      messageText.style.color="#CCF6FF";
+      messageText.style.textShadow="0 0 3px rgba(144, 234, 254, 0.5)";
     }
   });
 }
