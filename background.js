@@ -6,10 +6,7 @@ async function isPhishing(url) {
   if (whitelist.includes(url)) {
     return false; 
   }
-  const recentlyblockedlist=await getRecentlyBlockedList();
-  const rcntly_blocked_Cached=(bl_url)=>bl_url.url==url;
-  //Проверка недавно заблокированных на наличие
-  if(recentlyblockedlist.some(rcntly_blocked_Cached))return true;
+
   const fetchUrl = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=' + API_KEY;
   const response = await fetch(fetchUrl, {
     method: 'POST',
