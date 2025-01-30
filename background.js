@@ -54,15 +54,17 @@ async function handlePhishing(tabId) {
               text-shadow: 0 4px 0 rgba(235, 219, 205, 0.5);
               font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif; flex-direction: column;">
                 <p>Сайт заблокирован из-за фишинга!</p>
-                <button id="addToWhiteList" style="border: none;
-                 background-color:rgb(96, 146, 56);
-                 box-shadow:  0 0 10px rgba(87, 41, 31, 0.5);
-                 border-radius: 30px;
-                 text-shadow: 0 0 5px rgba(232, 239, 214, 0.5);
-                 color:rgb(223, 255, 213);
-                 width: 15rem; height: 4rem;
-                 cursor: pointer;"
-                 >Всё равно перейти</button>
+                <button id="addToWhiteList" 
+                style="border: none;
+                font-size: 20px;
+                background-color:rgb(96, 146, 56);
+                box-shadow:  0 0 10px rgba(87, 41, 31, 0.5);
+                border-radius: 30px;
+                text-shadow: 0 0 5px rgba(232, 239, 214, 0.5);
+                color:rgb(223, 255, 213);
+                width: 15rem; height: 4rem;
+                cursor: pointer;"
+                >Всё равно перейти</button>
               </div>
           `;
           document.body.style.cssText = 'margin: 0;';
