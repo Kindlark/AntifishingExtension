@@ -75,7 +75,7 @@ async function checkCurrentUrl() {
     const blocked = items.blocked;
     const wasBlocked= (bl_url) => bl_url.url==currentUrl;
     if (blocked && blocked.length > 0 && blocked.some(wasBlocked)) {    
-      showMessage(`Фишинговый сайт!`);
+      showMessage(`Сайт может быть фишинговым!`);
       body.style.backgroundImage="url('plug-img/background 4.svg')"
       messageCircle.style.backgroundColor="#CA4842"
       messageCircle.style.boxShadow="0 0 10px #CA4842";
