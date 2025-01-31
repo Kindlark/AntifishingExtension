@@ -1,0 +1,92 @@
+body{
+    background-color: #02090A;
+    color: #E2FAFF;
+    padding: 0;
+    margin: 0;
+    font-family: "Fira Sans", serif;
+    transition: 200ms;
+}
+.top{
+    position: relative;
+    width: 100%;
+    min-height: 63px;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+.topbg{
+    position: absolute;
+    top: 14px;
+    height: 63px;
+    width: 100%;
+    z-index: -1;
+    background-image: url(images/bluewave.svg);
+    background-repeat: repeat-x;
+}
+h1{
+    margin: 0;
+    font-size: 70px;
+    font-weight: 900;
+    transition: 200ms;
+    text-shadow: 0 2px 3px #538C99, 0 2px 15px #02090a;
+}
+h1:hover{
+    text-shadow: 0 2px 4px #538C99, 0 2px 30px #02090a;
+}
+h2{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 1px 3px #90EAFE;
+}
+.container{
+    width: 500px;
+    margin: 50px auto 0;
+}
+#whitelist{
+    margin-left: 0;
+}
+ul{
+    padding-left: 10px;
+}
+li{
+    font-family: "Fira Mono", serif;
+    list-style-type: none;
+    font-size: 18px;
+    text-shadow: 0 0 1px #90EAFE;
+    transition: 200ms;
+}
+li:hover{
+    color: #CA4842;
+    text-shadow: 0 0 10px #de4035d3;
+    cursor: pointer;
+}
+.bottom{
+    z-index: -2;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 200px;
+}
+h3{
+    z-index: -2;
+    margin: 0;
+    margin-bottom: -168px;
+    font-size: 140px;
+    text-shadow: 0 0 10px #020F11;
+    font-weight: 1000;
+    color: #05161A;
+}
+#thin{
+    color: #e2faff1a;
+    font-weight: 100;
+    transition: 100ms;
+    letter-spacing: 3.5px;
+    text-shadow: 0 0 5px #e2faff14;
+}
+#thin:hover{
+    text-shadow: 0 0 10px #aaf1ffca;
+    letter-spacing: 0;
+    color: #b4dae2e4;
+    font-weight: 900;
+}

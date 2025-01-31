@@ -21,7 +21,7 @@ function drawWL(){
         wl.forEach(domain => {
             const domainItem=document.createElement('li');
             domainItem.textContent=domain;
-            domainItem.setAttribute("style", "width: fit-content; font-size: 25px")
+            domainItem.setAttribute("style", "width: fit-content; font-size: 18px")
             domainItem.setAttribute("uniqueIndex", i.toString())
             domainItem.addEventListener("click", function name(e) {
                 let index=parseInt(this.getAttribute("uniqueIndex"))

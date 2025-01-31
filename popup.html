@@ -5,23 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Mono:wght@400;500;700&family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="bod">
     <div id="popup_content">
 
-        <a class="settings" href="settings.html" target="_blank">
-            <img src="plug-img/settings.png" style="height: 25px; width: 25px;">
-        </a>
-
-        <div id="cururl">Неудалось получить домен</div>
-        <div id="status" style="width: fit-content; height: fit-content; text-align: center; align-items: center; justify-self: center;">Нет информации D:</div>
-        <h4 class="recentlyblocked">Недавно заблокированные:</h4>
-
-        <p id="blockedSitesList"></p>
-        <div style="text-align: center;">
-            <button id="csv_download">csv</button>
-            <button id="json_download">json</button>
+        <div class="top">
+            <a class="settings" href="settings.html" target="_blank">
+                <img id="screw" src="plug-img/settings.png">
+            </a>
         </div>
+
+        <main>
+            <div id="cururl">Неудалось получить домен</div>
+            <div class="statusBox">
+                <div id="statusCircle"></div>
+                <div id="statusText">qwerty</div>
+            </div>
+
+            <div id="additionalblock">
+                <h4 class="recentlyblocked">Недавно заблокированные:</h4>
+                <p id="blockedSitesList"></p>
+            </div>
+            <div class="buttons">
+                Скачать отчёт:
+                <button id="csv_download" class="downloadbutton">csv</button>
+                <button id="json_download" class="downloadbutton">json</button>
+            </div>
+        </main>
+
     </div>
     <script src="popup.js"></script>
 </body>

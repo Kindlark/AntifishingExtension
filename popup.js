@@ -1,9 +1,11 @@
 const curUrl = document.getElementById('cururl');
-const messageDiv = document.getElementById('status');
+const messageCircle = document.getElementById('statusCircle');
+const messageText = document.getElementById('statusText');
 const recblockedwebsites = document.getElementById("blockedSitesList");
 const toSettings = document.getElementById('settings');
 const downloadCSV = document.getElementById('csv_download');
 const downloadJSON = document.getElementById('json_download');
+const body = document.getElementById('bod')
 
 const amountOfBlockedSitesToShow = 7;
 
@@ -63,7 +65,7 @@ async function getCurrentUrl() {
 }
 
 function showMessage(message) {
-  messageDiv.textContent = message;
+  messageText.textContent = message;
 }
 
 async function checkCurrentUrl() {
@@ -73,14 +75,19 @@ async function checkCurrentUrl() {
     const blocked = items.blocked;
     const wasBlocked= (bl_url) => bl_url.url==currentUrl;
     if (blocked && blocked.length > 0 && blocked.some(wasBlocked)) {    
-      showMessage(`Фишинговый сайт!`);
-      messageDiv.style.backgroundColor='#ff575f';
-      messageDiv.style.color="#ffffff";
-
+      showMessage(`Сайт может быть фишинговым!`);
+      body.style.backgroundImage="url('plug-img/background 4.svg')"
+      messageCircle.style.backgroundColor="#CA4842"
+      messageCircle.style.boxShadow="0 0 10px #CA4842";
+      messageText.style.color="#D44842";
+      messageText.style.textShadow="0 0 3px #822425";
     } else {
-      showMessage(`Этот сайт безопасен :D`);
-      messageDiv.style.backgroundColor='#83f7a0';
-      messageDiv.style.color="#000000";
+      showMessage(`Cайт безопасен :D`);
+      body.style.backgroundImage="url('plug-img/background 3.svg')"
+      messageCircle.style.backgroundColor="#19CFF8"
+      messageCircle.style.boxShadow="0 0 10px #19CFF8";
+      messageText.style.color="#CCF6FF";
+      messageText.style.textShadow="0 0 3px rgba(144, 234, 254, 0.5)";
     }
   });
 }
