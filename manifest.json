@@ -9,7 +9,8 @@
     "scripting",
     "tabs",
     "webNavigation",
-    "webRequest"
+    "webRequest",
+    "alarms"
   ],
   "host_permissions" : [
     "<all_urls>"
@@ -20,7 +21,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["content.js"]  
     }
   ],
   "action": {

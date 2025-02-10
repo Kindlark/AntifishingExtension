@@ -1,12 +1,11 @@
 const API_KEY = 'AIzaSyDaG1QNpDVufoq2i0X_HFHRuBb4QONf6vs';
 
 async function isPhishing(url) {
-
   const whitelist = await getWhitelist();
   if (whitelist.includes(url)) {
     return false; 
   }
-
+  else if (openPhishArray.includes(url))return true;
   const fetchUrl = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=' + API_KEY;
   const response = await fetch(fetchUrl, {
     method: 'POST',
@@ -133,7 +132,7 @@ function addToRecentlyBlocked(url) {
 }
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete' && tab.url) {
+  if (changeInfo.status === 'loading' && tab.url) {
       const url = tab.url;
       const isDangerous = await isPhishing(url);
       if (isDangerous) {
@@ -142,9 +141,34 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       }
   }
 });
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "add_to_whitelist") {
       addToWhitelist(message.url);
     }
 });
+
+chrome.alarms.create("update_cache_openphish", 
+  { delayInMinutes: 5,
+    periodInMinutes: 5
+  }
+);
+
+var openPhishArray=new Array();
+
+async function reCacheOpenPhish(){
+  const response=await fetch("https://raw.githubusercontent.com/openphish/public_feed/refs/heads/main/feed.txt", 
+    {
+      method: "GET"
+    }
+  );
+  const received=await response.text();
+  if(response.ok){
+    openPhishArray=received.split("\n");
+    //console.log("UPDATED")
+  }
+}
+
+chrome.alarms.onAlarm.addListener(async function alarm(alarm){
+  if(alarm.name==="update_cache_openphish")await reCacheOpenPhish();
+});
+reCacheOpenPhish();
