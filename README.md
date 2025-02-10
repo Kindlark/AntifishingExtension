@@ -13,5 +13,5 @@
 <br>    Процесс установки расширения не изменяется в зависимости от операционной системы и будет аналогичным как на Linux, так и на Windows c MacOS.<br/>
 <br>Ссылка на видеоролик с демонстрацией работы плагина<br/>  
 <br>    Пока нету :D<br/>
-Ссылки на видео с демонстрацией работы расширения:
-  https://vk.com/doc732846547_687833805?hash=jhzF3sNAo0GzHWGQJqV3wefZ2c2ABmn3JzbmZz0z7dT&dl=WmIpV3IzEHCOMWAkW21c5tM8lphRr9DMd6A82pSuGOL&api=1&no_preview=1
+<br>Ссылки на видео с демонстрацией работы расширения:</br>
+  <br>https://vk.com/doc732846547_687833805?hash=jhzF3sNAo0GzHWGQJqV3wefZ2c2ABmn3JzbmZz0z7dT&dl=WmIpV3IzEHCOMWAkW21c5tM8lphRr9DMd6A82pSuGOL&api=1&no_preview=1</br>
