@@ -2,10 +2,13 @@ const API_KEY = 'AIzaSyDaG1QNpDVufoq2i0X_HFHRuBb4QONf6vs';
 
 async function isPhishing(url) {
   const whitelist = await getWhitelist();
+  const includes=(website) => website.includes(url.replace(/^(https?:\/\/)/, '').match(/^([^:\/]+)/)[1]);
   if (whitelist.includes(url)) {
     return false; 
   }
-  else if (openPhishArray.includes(url))return true;
+  if(openPhishArray.some(includes)){
+    return true;
+  }
   const fetchUrl = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=' + API_KEY;
   const response = await fetch(fetchUrl, {
     method: 'POST',
@@ -39,7 +42,17 @@ async function handlePhishing(tabId) {
   chrome.scripting.executeScript({
       target: { tabId: tabId },
       function: () => {
+        document.open();
+        document.write("");
+        document.close();
           document.body.style='';
+          document.head.innerHTML='';
+          document.head.innerText='';
+          document.head.style='';
+          
+          const clear=(element) => document.body.removeAttribute(element);
+          document.body.removeAttributeNode
+          document.body.getAttributeNames().some(clear)
           document.body.innerHTML = `
               <div id="box">
                 <div id="container">
@@ -170,6 +183,15 @@ async function reCacheOpenPhish(){
     openPhishArray=received.split("\n");
     //console.log("UPDATED")
   }
+  const response_static_db=await fetch("https://raw.githubusercontent.com/codeesura/Anti-phishing-extension/refs/heads/main/phishing-sites-list.json",
+    {method: "GET"}
+  );
+  const resp_db=await response_static_db.json();
+  for(var site in resp_db){
+    openPhishArray.push(resp_db[site]);
+  }
+  console.log("RCVD");
+  console.log(openPhishArray);
 }
 
 chrome.alarms.onAlarm.addListener(async function alarm(alarm){
