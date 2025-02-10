@@ -553,6 +553,9 @@ async function handlePhishing(tabId) {
                   <button id="addToWhiteList">Добавить в белый список</button>
                 </div>
               </div>`;
+
+          document.body.style.height = '100vw';
+
           const box = document.getElementById("box");
           box.style.display = 'flex';
           box.style.margin = '0';
@@ -563,9 +566,10 @@ async function handlePhishing(tabId) {
           box.style.backgroundColor = '#02090A';
 
           const container = document.getElementById("container");
-          container.style.marginTop = '15%';
+          container.style.marginTop = '20%';
 
           const text = document.getElementById("text");
+          text.style.marginBottom = '60px';
           text.style.fontSize = '80px';
           text.style.fontWeight = '900';
           text.style.color = '#D44842';
@@ -585,11 +589,7 @@ async function handlePhishing(tabId) {
           button.style.color = '#D44842';
           button.style.textShadow = '0 2px 3px #591E1C';
           button.style.boxShadow = '0 0 5px #591E1C, inset 0 0 5px #591E1C';
-
-          
-          
-          document.body.style.height = '100%';
-          document.body.style.cssText = 'margin: 0;';
+          button.style.cursor = 'pointer';
             
           const addToWhiteList = document.getElementById("addToWhiteList");
           addToWhiteList.addEventListener("click", () => {
