@@ -36,10 +36,10 @@ async function isPhishing(url) {
 }
 
 async function handlePhishing(tabId) {
-
   chrome.scripting.executeScript({
       target: { tabId: tabId },
       function: () => {
+          document.body.style='';
           document.body.innerHTML = `
               <div id="box">
                 <div id="container">
@@ -49,7 +49,6 @@ async function handlePhishing(tabId) {
               </div>`;
 
           document.body.style.height = '100vw';
-
           const box = document.getElementById("box");
           box.style.display = 'flex';
           box.style.margin = '0';
