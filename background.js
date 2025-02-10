@@ -149,13 +149,12 @@ function addToRecentlyBlocked(url) {
 }
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'loading' && tab.url) {
-      const url = tab.url;
-      const isDangerous = await isPhishing(url);
-      if (isDangerous) {
-        handlePhishing(tabId, url);
-        addToRecentlyBlocked(url);
-      }
+  const url = tab.url;
+  const isDangerous = await isPhishing(url);
+  if (isDangerous) {
+    handlePhishing(tabId, url);
+    addToRecentlyBlocked(url);
+      
   }
 });
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
