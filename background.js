@@ -47,7 +47,12 @@ async function handlePhishing(tabId) {
                   <button id="addToWhiteList">Добавить в белый список</button>
                 </div>
               </div>`;
-
+          document.body.style.display = 'flex';
+          document.body.style.margin = '0';
+          document.body.style.justifyContent = 'center';
+          document.body.style.textAlign = 'center';
+          document.body.style.width = '100%';
+          document.body.style.height = '100%';
           document.body.style.height = '100%';
           const box = document.getElementById("box");
           box.style.display = 'flex';
