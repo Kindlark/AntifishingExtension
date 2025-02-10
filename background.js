@@ -48,7 +48,7 @@ async function handlePhishing(tabId) {
                 </div>
               </div>`;
 
-          document.body.style.height = '100vw';
+          document.body.style.height = '100%';
           const box = document.getElementById("box");
           box.style.display = 'flex';
           box.style.margin = '0';
